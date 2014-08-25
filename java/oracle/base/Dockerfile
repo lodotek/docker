@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM vubui/ubuntu:latest
 MAINTAINER Vu Bui
 
 RUN \
@@ -9,5 +9,7 @@ RUN \
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && \
 
   echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
-  echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
+  echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections && \
+  apt-get update && \
+  apt-get dist-upgrade
 
