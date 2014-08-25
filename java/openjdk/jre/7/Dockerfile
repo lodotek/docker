@@ -1,4 +1,4 @@
-FROM vubui/jre-headless:openjdk7
+FROM vubui/openjdk-jre-headless:7
 MAINTAINER Vu Bui
 
 RUN \

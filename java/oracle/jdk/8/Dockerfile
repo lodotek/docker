@@ -1,4 +1,4 @@
-FROM vubui/java-base:oracle
+FROM vubui/oracle-java-base:latest
 MAINTAINER Vu Bui
 
 RUN \
