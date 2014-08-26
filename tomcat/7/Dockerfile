@@ -12,6 +12,7 @@ RUN \
   mkdir /tmp/tomcat7 && \
   ln -s /tmp/tomcat7 temp && \
   echo CATALINA_BASE=`pwd` >> /usr/share/tomcat7/bin/setenv.sh && \
-  echo JAVA_OPTS=/usr/lib/x86_64-linux-gnu >> /usr/share/tomcat7/bin/setenv.sh
+  echo JAVA_OPTS=-Djava.library.path=/usr/lib/x86_64-linux-gnu >> /usr/share/tomcat7/bin/setenv.sh
 
 CMD /usr/share/tomcat7/bin/catalina.sh run
+
