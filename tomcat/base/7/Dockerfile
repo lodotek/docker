@@ -1,8 +1,9 @@
 FROM vubui/oracle-java:8
 MAINTAINER Vu Bui
 
-RUN \
-  apt-get install -y tomcat7 libtcnative-1
+VOLUME /var/lib/tomcat7/webapps
+
+RUN apt-get install -y tomcat7 libtcnative-1
 
 EXPOSE 8080
 
