@@ -1,7 +1,7 @@
 FROM vubui/oracle-java:8
 MAINTAINER Vu Bui
 
-VOLUME /var/lib/tomcat7/webapps
+VOLUME /webapps
 
 RUN apt-get install -y tomcat7 libtcnative-1
 
@@ -9,8 +9,9 @@ EXPOSE 8080
 
 WORKDIR /var/lib/tomcat7
 RUN \
+  sed -i 's/\(appBase=\)"[^"]*"/\1"\/webapps"/' conf/server.xml && \
   sed -i 's/\(Server\) port="[0-9]\{4\}"/\1/' conf/server.xml && \
-  sed -i '/<!--$/{N;N;s/.*\n\(.*AprLifecycleListener.*\)\n.*/\1/}' conf/server.xml && \
+  sed -i '/<!--$/{N;/AprLifecycleListener/{N;s/.*\n\(.*\)\n.*/\1/}}' conf/server.xml && \
   mkdir /tmp/tomcat7 && \
   ln -s /tmp/tomcat7 temp && \
   echo CATALINA_BASE=`pwd` >> /usr/share/tomcat7/bin/setenv.sh && \
