@@ -1,8 +1,6 @@
 FROM vubui/tomcat-base:7
 MAINTAINER Vu Bui
 
-EXPOSE 8443
-
 RUN mkdir /root/.ssh
 WORKDIR /root/.ssh
 RUN \
@@ -13,4 +11,6 @@ RUN \
 
 WORKDIR /var/lib/tomcat7
 RUN sed -i '/<!--$/{N;/SSLEnabled/{N;N;N;s/.*<!--\n\(.*\)\/>\n.*-->/\1SSLCertificateFile="\/root\/.ssh\/id_rsa.crt" SSLCertificateKeyFile="\/root\/.ssh\/id_rsa" SSLVerifyClient="optional" \/>/}}' conf/server.xml
+
+EXPOSE 8443
 
