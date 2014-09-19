@@ -18,7 +18,7 @@ FLUSH PRIVILEGES;
 DROP DATABASE IF EXISTS test;
 EOSQL
 
-  mysql --password=root < $MYSQL_INIT_SCRIPT
+  mysql -u root --password=root < $MYSQL_INIT_SCRIPT
 fi
 
 if [ -z $1 && -x $1 ]; then
