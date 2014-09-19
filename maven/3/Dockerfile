@@ -16,5 +16,6 @@ RUN \
 
 WORKDIR /src
 
-ENTRYPOINT ["mvn"]
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 

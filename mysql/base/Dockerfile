@@ -7,3 +7,6 @@ RUN \
 
 EXPOSE 3306
 
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
