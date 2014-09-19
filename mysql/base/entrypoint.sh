@@ -21,7 +21,7 @@ EOSQL
   mysql -u root --password=root < $MYSQL_INIT_SCRIPT
 fi
 
-if [ -z $1 && -x $1 ]; then
+if [ -n $1 ] && [ -x $1 ]; then
   exec "$@"
 else
   exec tail -f /var/log/mysql/error.log
