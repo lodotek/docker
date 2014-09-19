@@ -11,15 +11,15 @@ if [ ! -f $MYSQL_INIT_SCRIPT ]; then
 
   cat > "$MYSQL_INIT_SCRIPT" \
 <<-EOSQL
-DELETE FROM mysql.user;
-FLUSH PRIVILEGES;
+DELETE FROM mysql.user where User <> 'debian-sys-maint';
 CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
 GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION;
+GRANT PROXY ON ''@'' TO 'root'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 DROP DATABASE IF EXISTS test;
 EOSQL
 
-  mysql --user='root' --password='root' < "$MYSQL_INIT_SCRIPT"
+  mysql --password='root' < "$MYSQL_INIT_SCRIPT"
 fi
 
 if [ -n "$1" ] && [ -x "$(which $1)" ]; then
