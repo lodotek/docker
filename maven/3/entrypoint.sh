@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -x $1 ]; then
+if [ -x "$(which $1)" ]; then
   exec "$@"
 else
   exec mvn "$@"

@@ -2,14 +2,14 @@
 
 service mysql start
 
-MYSQL_INIT_SCRIPT=/tmp/mysql-init.sql
+MYSQL_INIT_SCRIPT='/tmp/mysql-init.sql'
 
 if [ ! -f $MYSQL_INIT_SCRIPT ]; then
   if  [ -z $MYSQL_ROOT_PASSWORD ]; then
     export MYSQL_ROOT_PASSWORD=root
   fi
 
-  cat > $MYSQL_INIT_SCRIPT \
+  cat > "$MYSQL_INIT_SCRIPT" \
 <<-EOSQL
 DELETE FROM mysql.user;
 FLUSH PRIVILEGES;
@@ -19,10 +19,10 @@ FLUSH PRIVILEGES;
 DROP DATABASE IF EXISTS test;
 EOSQL
 
-  mysql --user=root --password=root < $MYSQL_INIT_SCRIPT
+  mysql --user='root' --password='root' < "$MYSQL_INIT_SCRIPT"
 fi
 
-if [ -n $1 ] && [ -x $1 ]; then
+if [ -n "$1" ] && [ -x "$(which $1)" ]; then
   exec "$@"
 else
   exec tail -f /var/log/mysql/error.log
