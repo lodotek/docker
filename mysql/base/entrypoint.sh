@@ -16,7 +16,13 @@ GRANT PROXY ON ''@'' TO 'root'@'%' WITH GRANT OPTION;
 DROP DATABASE IF EXISTS test;
 EOSQL
 
+  mv /var/lib/mysql/* /data/
+  mv /var/log/mysql/* /logs/
+  rm -r /var/lib/mysql /var/log/mysql
+  ln -s /data /var/lib/mysql
+  ln -s /logs /var/log/mysql
   sed -i 's/\(bind-address\)/#\1/' /etc/mysql/my.cnf
+  
   service mysql start
   mysql --password='root' < "$MYSQL_INIT_SCRIPT"
   service mysql stop

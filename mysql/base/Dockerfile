@@ -1,6 +1,8 @@
 FROM vubui/ubuntu:latest
 MAINTAINER Vu Bui
 
+VOLUME ["/data", "/logs"]
+
 RUN \
   echo "mysql-server mysql-server/root_password password root" | debconf-set-selections && \
   echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections
