@@ -12,7 +12,8 @@ RUN \
   mv /usr/local/apache-maven-$MAVEN_VERSION /usr/local/maven && \
   rm apache-maven-$MAVEN_VERSION-bin.tar.gz && \
   ln -s /usr/local/maven/bin/mvn /usr/local/bin/mvn && \
-  ln -s /usr/local/maven/bin/mvnDebug /usr/local/bin/mvnDebug
+  ln -s /usr/local/maven/bin/mvnDebug /usr/local/bin/mvnDebug && \
+  ln -s /.m2 ~/.m2
 
 WORKDIR /src
 
