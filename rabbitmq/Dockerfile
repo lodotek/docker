@@ -1,4 +1,4 @@
-FROM vubui/erlang:17
+FROM vubui/erlang:latest
 MAINTAINER Vu Bui
 
 VOLUME ["/etc/rabbitmq", "/var/lib/rabbitmq", "/var/log/rabbitmq"]
