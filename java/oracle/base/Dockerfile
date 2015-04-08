@@ -2,9 +2,9 @@ FROM vubui/ubuntu:latest
 MAINTAINER Vu Bui
 
 RUN \
-  echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu `lsb_release -cs` main" \
+  echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu `cat /etc/lsb-release | grep CODENAME | cut -d'=' -f2` main" \
     >> /etc/apt/sources.list.d/webupd8team-java.list && \
-  echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu `lsb_release -cs` main" \
+  echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu `cat /etc/lsb-release | grep CODENAME | cut -d'=' -f2` main" \
     >> /etc/apt/sources.list.d/webupd8team-java.list && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886 && \
 
