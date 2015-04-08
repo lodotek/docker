@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:15.04
 MAINTAINER Vu Bui
 
 RUN \
