@@ -4,7 +4,7 @@ MAINTAINER Vu Bui
 VOLUME ["/src", "/.m2"]
 
 ENV MAVEN_MAJOR 3
-ENV MAVEN_VERSION 3.2.3
+ENV MAVEN_VERSION 3.3.1
 
 RUN \
   wget http://www.us.apache.org/dist/maven/maven-$MAVEN_MAJOR/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz && \
