@@ -10,9 +10,7 @@ RUN \
   tar -xzf rabbitmq-server-generic-unix-$RABBITMQ_VERSION.tar.gz -C /usr/local && \
   mv /usr/local/rabbitmq_server-$RABBITMQ_VERSION /usr/local/rabbitmq && \
   rm rabbitmq-server-generic-unix-$RABBITMQ_VERSION.tar.gz && \
-  ln -s /usr/local/rabbitmq/sbin/rabbitmq-server /usr/local/bin/rabbitmq-server && \
-  ln -s /usr/local/rabbitmq/sbin/rabbitmqctl /usr/local/bin/rabbitmqctl && \
-  ln -s /usr/local/rabbitmq/sbin/rabbitmq-plugins /usr/local/bin/rabbitmq-plugins && \
+  ln -s /usr/local/rabbitmq/sbin/* /usr/local/bin/ && \
   mv /usr/local/rabbitmq/etc/rabbitmq/* /etc/rabbitmq/ && \
   rm -r /usr/local/rabbitmq/etc/rabbitmq && \
   ln -s /etc/rabbitmq /usr/local/rabbitmq/etc/rabbitmq && \
