@@ -13,9 +13,10 @@ if [ ! -f '/etc/rabbitmq/rabbitmq.config' ]; then
 fi
 
 if [ -z $@ ]; then
-  exec "$@"
-else
   rabbitmq-server -detached
+  sleep 5
   exec "tail -f /var/log/rabbitmq/rabbit\@`cat /etc/hostname`.log"
+else
+  exec "$@"
 fi
 
