@@ -16,12 +16,11 @@ RUN \
   ln -s /etc/rabbitmq /usr/local/rabbitmq/etc/rabbitmq && \
   mkdir -p /usr/local/rabbitmq/var/log /usr/local/rabbitmq/var/lib && \
   ln -s /var/lib/rabbitmq /usr/local/rabbitmq/var/lib/rabbitmq && \
-  ln -s /var/log/rabbitmq /usr/local/rabbitmq/var/log/rabbitmq && \
-  rabbitmq-plugins enable --offline rabbitmq_stomp && \
-  rabbitmq-plugins enable --offline rabbitmq_management && \
-  rabbitmq-plugins enable --offline rabbitmq_management_visualiser
+  ln -s /var/log/rabbitmq /usr/local/rabbitmq/var/log/rabbitmq
 
 EXPOSE 5672 61613 15672
 
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["rabbitmq-server"]
 
