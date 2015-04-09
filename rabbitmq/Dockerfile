@@ -22,5 +22,4 @@ EXPOSE 5672 61613 15672
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["rabbitmq-server"]
 
