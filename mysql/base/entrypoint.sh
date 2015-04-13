@@ -22,9 +22,14 @@ EOSQL
   ln -s /data /var/lib/mysql
   ln -s /logs /var/log/mysql
   chown mysql:mysql /data /logs /var/lib/mysql /var/log/mysql
-  sed -i 's/\(bind-address\)/#\1/' /etc/mysql/mysql.conf.d/mysqld.cnf
-  echo 'skip_name_resolve' >> /etc/mysql/mysql.conf.d/mysqld.cnf
-  
+
+  MYSQL_CONF_FILE='/etc/mysql/mysql.conf.d/mysqld.cnf'
+  if [ ! -f $MYSQL_CONF_FILE ]; then
+    MYSQL_CONF_FILE='/etc/mysql/my.cnf'
+  fi
+  sed -i 's/\(bind-address\)/#\1/' $MYSQL_CONF_FILE
+  sed -i '/\[mysqld\]/askip_name_resolve' $MYSQL_CONF_FILE
+
   service mysql start
   mysql --password='root' < "$MYSQL_INIT_SCRIPT"
   service mysql stop
