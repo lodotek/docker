@@ -5,7 +5,7 @@ MYSQL_LOGS='/logs'
 MYSQL_INIT_SCRIPT="$MYSQL_DATA/mysql-init.sql"
 MYSQL_CONFIGURED='/tmp/configured'
 
-if [ ! -f $MYSQL_CONFIGURED]; then
+if [ ! -f $MYSQL_CONFIGURED ]; then
   MYSQL_CONF_FILE='/etc/mysql/mysql.conf.d/mysqld.cnf'
   if [ ! -f $MYSQL_CONF_FILE ]; then
     MYSQL_CONF_FILE='/etc/mysql/my.cnf'
