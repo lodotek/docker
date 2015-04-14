@@ -11,7 +11,6 @@ RUN \
   mv /usr/local/rabbitmq_server-$RABBITMQ_VERSION /usr/local/rabbitmq && \
   rm rabbitmq-server-generic-unix-$RABBITMQ_VERSION.tar.gz && \
   ln -s /usr/local/rabbitmq/sbin/* /usr/local/bin/ && \
-  mv /usr/local/rabbitmq/etc/rabbitmq/* /conf/ && \
   rm -r /usr/local/rabbitmq/etc/rabbitmq && \
   ln -s /conf /usr/local/rabbitmq/etc/rabbitmq && \
   mkdir -p /usr/local/rabbitmq/var/log /usr/local/rabbitmq/var/lib && \
