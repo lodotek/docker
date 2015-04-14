@@ -21,7 +21,7 @@ if [ ! -f $MYSQL_CONFIGURED ]; then
   rm -r /var/lib/mysql /var/log/mysql
   ln -s $MYSQL_DATA /var/lib/mysql
   ln -s $MYSQL_LOGS /var/log/mysql
-  chown mysql:mysql $MYSQL_DATA $MYSQL_LOGS /var/lib/mysql /var/log/mysql
+  chown -R mysql:mysql $MYSQL_DATA $MYSQL_LOGS /var/lib/mysql /var/log/mysql
 fi
 
 if [ ! -f $MYSQL_INIT_SCRIPT ]; then
