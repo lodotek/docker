@@ -1,7 +1,7 @@
 FROM vubui/erlang:latest
 MAINTAINER Vu Bui
 
-VOLUME ["/conf", "/data", "/log", "/root"]
+VOLUME ["/conf", "/data", "/logs", "/root"]
 
 ENV RABBITMQ_VERSION 3.5.1
 
@@ -15,7 +15,7 @@ RUN \
   ln -s /conf /usr/local/rabbitmq/etc/rabbitmq && \
   mkdir -p /usr/local/rabbitmq/var/log /usr/local/rabbitmq/var/lib && \
   ln -s /data /usr/local/rabbitmq/var/lib/rabbitmq && \
-  ln -s /log /usr/local/rabbitmq/var/log/rabbitmq
+  ln -s /logs /usr/local/rabbitmq/var/log/rabbitmq
 
 EXPOSE 5672 61613 15672 25672
 

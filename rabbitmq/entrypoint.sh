@@ -1,17 +1,17 @@
 #!/bin/bash
 
-CONF_LOC='/conf'
+RABBITMQ_CONF='/conf'
 
-if [ ! -f "$CONF_LOC/enabled_plugins" ]; then
+if [ ! -f "$RABBITMQ_CONF/enabled_plugins" ]; then
   if  [ -z $RABBITMQ_PLUGINS ]; then
     export RABBITMQ_PLUGINS='[rabbitmq_management_visualiser,rabbitmq_stomp].'
   fi
 
-  echo $RABBITMQ_PLUGINS > $CONF_LOC/enabled_plugins
+  echo $RABBITMQ_PLUGINS > $RABBITMQ_CONF/enabled_plugins
 fi
 
-if [ ! -f "$CONF_LOC/rabbitmq.config" ]; then
-  echo '[{rabbit, [{loopback_users, []}]}].' > $CONF_LOC/rabbitmq.config
+if [ ! -f "$RABBITMQ_CONF/rabbitmq.config" ]; then
+  echo '[{rabbit, [{loopback_users, []}]}].' > $RABBITMQ_CONF/rabbitmq.config
 fi
 
 exec "$@"
