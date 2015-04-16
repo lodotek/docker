@@ -17,7 +17,7 @@ RUN \
   ln -s /data /usr/local/rabbitmq/var/lib/rabbitmq && \
   ln -s /logs /usr/local/rabbitmq/var/log/rabbitmq
 
-EXPOSE 5672 61613 15672 25672
+EXPOSE 5672 61613 15672 25672 4369
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
