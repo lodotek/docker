@@ -24,10 +24,10 @@ if [ ! -d "$RABBITMQ_DATA/mnesia/rabbit@$(cat /etc/hostname)" -a "$RABBITMQ_CLUS
   if [ "$RABBITMQ_CLUSTER_IP" ]; then
     echo "$RABBITMQ_CLUSTER_IP $RABBITMQ_CLUSTER_HOST" >> /etc/hosts
   fi
-  rabbitmq-server -detached
+  rabbitmq-server & rabbitmqctl wait "$RABBITMQ_DATA/mnesia/rabbit@$(cat /etc/hostname).pid"
   rabbitmqctl stop_app
   rabbitmqctl join_cluster rabbit@$RABBITMQ_CLUSTER_HOST
-  rabbitmqctl stop
+  rabbitmqctl stop "$RABBITMQ_DATA/mnesia/rabbit@$(cat /etc/hostname).pid"
 fi
 
 exec "$@"
